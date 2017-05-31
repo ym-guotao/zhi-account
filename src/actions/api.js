@@ -9,6 +9,9 @@ import {
   GET_MESSAGE_REQUEST,
   GET_MESSAGE_SUCCESS,
   GET_MESSAGE_FAIL,
+  REGISITERED_REQUEST,
+  REGISITERED_SUCCESS,
+  REGISITERED_FAIL
 } from '../constants';
 
 
@@ -53,6 +56,24 @@ export function login(data) {
   };
 }
 
+export function regisitered(data) {
+  return async (dispatch) => {
+    const action = await dispatch({
+      [CALL_API]: {
+        endpoint: callFakeAPI(data),
+        method: 'POST',
+        body: JSON.stringify(data),
+        types: [REGISITERED_REQUEST, REGISITERED_SUCCESS, REGISITERED_FAIL],
+      }
+    });
+
+    if(action.type === REGISITERED_SUCCESS) {
+      localStorage.setItem('session', JSON.stringify(action.payload));
+      browserHistory.push('/');
+    }
+  };
+}
+
 export function logout() {
   localStorage.removeItem('session');
   browserHistory.push('/login');
@@ -64,7 +85,7 @@ export function logout() {
 export function getMessage() {
   return {
     [CALL_API]: {
-      endpoint: callFakeAPI({id: '12121212', content: 'Welcome to 36node.'}),     // url or function
+      endpoint: callFakeAPI({id: '12121212', content: 'Welcome to zhisland.'}),     // url or function
       method: 'POST',
       schema: messageSchema,
       types: [GET_MESSAGE_REQUEST, GET_MESSAGE_SUCCESS, GET_MESSAGE_FAIL],

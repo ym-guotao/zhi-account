@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 import * as cs from '../constants';
 import session from './session';
 import entities from './entity';
@@ -33,7 +34,8 @@ const combineReducersPlus = compose(combineReducers, injectCommonReducer);
 const rootReducer = combineReducersPlus({
   session,
   entities,
-  message
+  message,
+  form: formReducer
 });
 
 export default rootReducer;

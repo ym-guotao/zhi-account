@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {getMessage, logout} from '../actions/api';
@@ -35,7 +36,7 @@ export default class HomePage extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.props.getMessage();
-    }, 1000);
+    }, 2000);
   }
 
   onClick() {

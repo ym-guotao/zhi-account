@@ -6,6 +6,7 @@ export const CALL_API = Symbol('Call API');
 
 // A Redux middleware that interprets actions with CALL_API info specified.
 // Performs the call and promises when such actions are dispatched.
+// 先拆成单参数函数再说！
 export default store => next => action => {
   const callAPI = action[CALL_API];
   if(typeof callAPI === 'undefined') {

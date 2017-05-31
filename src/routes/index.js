@@ -3,6 +3,7 @@ import {Router, Route, IndexRoute} from 'react-router';
 import Home from '../containers/home';
 import Layout from '../containers/layout';
 import Login from '../containers/login';
+import Regisitered from '../containers/regisitered';
 
 
 const authCheck = (nextState, replace) => {
@@ -18,5 +19,6 @@ export default(
       <IndexRoute component={Home} />
     </Route>
     <Route path="login" component={Login} />
+    <Route path="regisitered" component={Regisitered} />
   </Router>
 );
