@@ -45,7 +45,7 @@ export default class HomePage extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{border: '20px solid #cfc'}}>
         <Hello msg={this.props.message} email={this.props.email} />
         <button onClick={this.onClick}>
           Logout
