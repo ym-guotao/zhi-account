@@ -4,11 +4,11 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {getMessage, logout} from '../actions/api';
 import Hello from '../components/hello';
-import {selectEmail, selectMsg} from '../selectors';
+import {selectUser, selectMsg} from '../selectors';
 
 
 const mapStateToProps = state => ({
-  email: selectEmail(state) || 'anonymous',
+  user: selectUser(state) || 'anonymous',
   message: selectMsg(state) || 'fetching...',
 });
 const mapDispatchToProps = dispatch => bindActionCreators(
@@ -25,7 +25,7 @@ export default class HomePage extends Component {
     getMessage: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired,
     message: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired
+    user: PropTypes.string.isRequired
   }
 
   constructor() {
@@ -45,8 +45,8 @@ export default class HomePage extends Component {
 
   render() {
     return (
-      <div style={{border: '20px solid #cfc'}}>
-        <Hello msg={this.props.message} email={this.props.email} />
+      <div>
+        <Hello msg={this.props.message} user={this.props.user} />
         <button onClick={this.onClick}>
           Logout
         </button>

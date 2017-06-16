@@ -51,7 +51,7 @@ export default class RegisteredPage extends Component {
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <div>
             <Field
-              name="name"
+              name="user"
               component={TextField}
               hintText="请输入用户名"
               floatingLabelText="用户"

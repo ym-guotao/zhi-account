@@ -1,11 +1,11 @@
 import {createSelector} from 'reselect';
 
 
-export const selectEmail = state => state.session.email;
+export const selectUser = state => state.session.user;
 export const selectMsgId = state => state.message.result;
 export const selectMsgEntities = state => state.entities.messages;
 export const selectMsg = createSelector(
-  [selectMsgId, selectMsgEntities, selectEmail],
+  [selectMsgId, selectMsgEntities, selectUser],
   (id, entities) => {
     if(entities[id]) {
       return entities[id].content;

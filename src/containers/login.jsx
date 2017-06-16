@@ -32,12 +32,7 @@ export default class LoginPage extends Component {
     handleSubmit: PropTypes.func.isRequired
   }
 
-  constructor() {
-    super();
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  onSubmit(data) {
+  onSubmit = (data) => {
     const {next = '/'} = this.props.location.query;
     this.props.login(Object.assign({}, data, {next, auth: true}));
   }
@@ -53,7 +48,7 @@ export default class LoginPage extends Component {
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <div>
             <Field
-              name="name"
+              name="user"
               component={TextField}
               hintText="请输入用户名"
               floatingLabelText="用户"
